@@ -1,12 +1,24 @@
 package Exobrain::Intent::Beeminder;
-
-use v5.10.0;
-
 use Moose;
 use Method::Signatures;
 
-# This provides a message which Beeminder sinks will act upon.
-# Intent::Beeminder->new( goal => 'inbox', value => 52 );
+# ABSTRACT: Exobrain intent packet for sending data to Beeminder.
+# VERSION
+
+=head1 SYNOPSIS
+
+    $exobrain->intent('Beeminder',
+        goal    => 'inbox',                     # Mandatory
+        value   => 52,                          # Mandatory
+        comment => "Submitted via Exobrain",    # Optional
+    );
+
+=head1 DESCRIPTION
+
+This intent sends data to Beeminder. It is typically processed by
+the L<Exobrain::Agent::Beeminder::Sink> agent.
+
+=cut
 
 method summary() {
     my $summary = join(' ', 'Beeminder: Set', $self->goal, 'to', $self->value);
