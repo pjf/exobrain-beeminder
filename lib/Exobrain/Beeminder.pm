@@ -22,6 +22,10 @@ This component provides the following agents:
 
 =over
 
+=item L<Exobrain::Agent::Beeminder::Source>
+
+=item L<Exobrain::Agent::Beeminder::Sink>
+
 =back
 
 It also provides L<Exobrain::Intent::Beeminder> and
