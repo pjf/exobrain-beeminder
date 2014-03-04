@@ -2,7 +2,8 @@ package Exobrain::Agent::Beeminder::Source;
 use Moose;
 use Method::Signatures;
 use Try::Tiny;
-use Dancer qw(set post warning debug status error dance);
+use Dancer qw(set post warning debug status error dance params param);
+use Data::Dumper;
 
 with 'Exobrain::Agent::Beeminder';
 with 'Exobrain::Agent::Run';
