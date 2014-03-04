@@ -1,6 +1,7 @@
 package Exobrain::Agent::Beeminder::Notify;
 
 # ABSTRACT: Send a notification every time a bmndr data point is updated
+# VERSION
 
 use Exobrain;
 use Moose;
