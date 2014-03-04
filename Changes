@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+1.05      2014-03-03 17:45:17PST-0800 America/Los_Angeles
+
     * META: Updated version number so components moved into this
             distribution didn't go backwards.
 
