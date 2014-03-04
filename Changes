@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+    * META: Updated version number so components moved into this
+            distribution didn't go backwards.
+
 1.00      2014-03-03 17:39:06PST-0800 America/Los_Angeles
 
     * Initial release to CPAN
