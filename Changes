@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+1.06      2014-03-03 18:47:34PST-0800 America/Los_Angeles
+
     * BUILD: Compatbility fixes for Perl 5.10.x
 
 1.05      2014-03-03 17:45:17PST-0800 America/Los_Angeles
