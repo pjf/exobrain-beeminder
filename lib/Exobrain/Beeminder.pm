@@ -50,6 +50,7 @@ sub services {
     return (
         source   => 'Beeminder::Source',
         sink     => 'Beeminder::Sink',
+        notify   => 'Beeminder::Notify',
     )
 }
 
