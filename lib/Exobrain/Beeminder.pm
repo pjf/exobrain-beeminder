@@ -1,7 +1,7 @@
 package Exobrain::Beeminder;
 use Exobrain::Config;
 use Moose;
-use v5.10.0;
+use feature qw(say);    # Needed to make 5.10 happy.
 
 # ABSTRACT: Beeminder components for exobrain
 # VERSION
