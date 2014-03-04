@@ -94,7 +94,7 @@ sub setup {
 
     my $config =
         "[Components]\n" .
-        "Exobrain=$VERSION\n\n" .
+        "Beeminder=$VERSION\n\n" .
 
         "[Beeminder]\n" .
         "auth_token    = $token\n" .
