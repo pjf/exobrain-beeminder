@@ -1,5 +1,7 @@
 package Exobrain::Beeminder;
+use Exobrain::Config;
 use Moose;
+use v5.10.0;
 
 # ABSTRACT: Beeminder components for exobrain
 # VERSION
@@ -51,6 +53,60 @@ sub services {
     )
 }
 
+# This runs the setup process, and is executed by the `exobrain`
+# cmdline tool the first time we run our code.
+
+sub setup {
+    
+    # Load our WebService for testing.
+    eval 'require WebService::Beeminder';
+    die $@ if $@;
+
+    say "Welcome to the Exobrain::Beeminder setup process.";
+    say "To start with we need from you is your Beeminder auth token.";
+    say "If you're logged into Beeminder, you can find it here:\n";
+    say "https://www.beeminder.com/settings/account";
+    print "\nAuth token: ";
+
+    chomp(my $token = <STDIN>);
+
+    # Connect to make sure that we're working. This should throw
+    # an exception if things go wrong. :)
+
+    my $bee = WebService::Beeminder->new( token => $token );
+    my $user = $bee->user->{username};
+
+    say "\nThanks, $user!\n";
+
+    # Now configure our callback port.
+
+    say "Exobrain::Beeminder can be configured to accept callbacks from Beeminder.";
+    say "For this, we need a dedicted port that can be reached from the outside world.";
+    say "To disable this functionality, provide a port of 0";
+
+    print "\nCallback port: [default: 3000] ";
+
+    chomp(my $port = <STDIN>);
+    if ($port eq '') { $port = 3000; }
+
+    say "\nGreat! Writing configuration...";
+
+    my $config =
+        "[Components]\n" .
+        "Exobrain=$VERSION\n\n" .
+
+        "[Beeminder]\n" .
+        "auth_token    = $token\n" .
+        "callback_port = $port\n"
+    ;
+
+    my $filename = Exobrain::Config->write_config('Beeminder.ini', $config);
+
+    say "\nConfig written to $filename. Have a nice day!";
+
+    return;
+}
+
 1;
 
-=for Pod::Coverage component services
+=for Pod::Coverage component services setup
